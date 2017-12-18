@@ -1,0 +1,24 @@
+<ehcache>
+
+	<!-- diskStore元素设置缓存数据文件的存储目录 -->
+	<diskStore path="java.io.tmpdir" />
+
+
+	<!--defaultCache元素设置缓存的默认数据过期策略 -->
+	<!-- maxElementsInMemory属性设置缓存对象的最大数目； eternal属性指定是否永不过期，true为不过期，false为过期； 
+		timeToldleSeconds属性设置对象处于空闲状态的最大秒数； timeToLiveSeconds属性设置对象处于缓存状态的最大秒数； overflowToDisk属性设置内存溢出时是否将溢出对象写入硬盘 -->
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true" />
+
+
+	<!-- cache元素设置具体的命名缓存的数据过期策略。 每个命名缓存代表一个缓存区域， 命名缓存机制允许用户在每个类以及类的每个集合的粒度上设置数据过期策略 -->
+	<cache name="sampleCache1" maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="300" timeToLiveSeconds="600" overflowToDisk="true" />
+
+	<!-- sampleCache2 此缓存含有100元素. 元素永远存储在内存 从不过期. -->
+	<cache name="sampleCache2" maxElementsInMemory="1000" eternal="true"
+		timeToIdleSeconds="0" timeToLiveSeconds="0" overflowToDisk="false" />
+
+	<!-- Place configuration for your caches following -->
+
+</ehcache>
